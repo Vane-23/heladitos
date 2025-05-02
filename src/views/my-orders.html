@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos - Heladería Artesanal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar (se carga mediante JavaScript) -->
+    <script src="/js/navbar.js"></script>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mx-auto">
+            <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Mis Pedidos</h1>
+            
+            <div id="ordersContainer" class="space-y-6">
+                <!-- Aquí se cargarán las órdenes dinámicamente -->
+                <div class="text-center py-10 text-gray-500">
+                    <i class="fas fa-spinner fa-spin fa-2x mb-4"></i>
+                    <p>Cargando tus pedidos...</p>
+                </div>
+            </div>
+            
+            <div id="noOrdersMessage" class="hidden text-center py-10">
+                <i class="fas fa-ice-cream text-gray-400 text-5xl mb-4"></i>
+                <p class="text-gray-500 text-xl">Aún no tienes compras realizadas</p>
+                <a href="/flavours" class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                    Ver Productos
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Template para cada orden -->
+    <template id="orderTemplate">
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+            <div class="bg-blue-50 p-4 flex justify-between items-center">
+                <div>
+                    <h3 class="font-semibold text-lg">Pedido #<span class="order-id"></span></h3>
+                    <p class="text-gray-600 text-sm"><i class="far fa-calendar-alt mr-1"></i> <span class="order-date"></span></p>
+                </div>
+                <div>
+                    <span class="order-status px-3 py-1 rounded-full text-sm font-medium"></span>
+                </div>
+            </div>
+            
+            <div class="p-4">
+                <div class="order-items space-y-3">
+                    <!-- Aquí se cargarán los items de cada orden -->
+                </div>
+                
+                <div class="mt-4 pt-4 border-t">
+                    <div class="flex justify-between text-lg font-bold">
+                        <span>Total:</span>
+                        <span class="order-total"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template para cada item de orden -->
+    <template id="orderItemTemplate">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="" alt="" class="item-image w-16 h-16 rounded-lg object-cover mr-4">
+                <div>
+                    <h4 class="item-name font-medium"></h4>
+                    <p class="item-quantity text-gray-600 text-sm"></p>
+                </div>
+            </div>
+            <span class="item-price font-semibold"></span>
+        </div>
+    </template>
+
+    <!-- Cargar el script JS separado -->
+    <script src="/js/my-orders.js"></script>
+</body>
+</html>
